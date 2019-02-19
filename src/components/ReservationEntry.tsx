@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
-import DatePicker from 'react-native-datepicker'
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import DatePicker from 'react-native-datepicker';
 import RNPickerSelect from 'react-native-picker-select';
 
 import ReservationCreateInputType from '../types/ReservationCreateInputType';
@@ -45,32 +45,6 @@ class ReservationEntry extends React.PureComponent<Props, State> {
     };
   }
 
-  private validateAndSubmit() {
-    if(!this.state.hotelName) {
-      this.setState({error: 'Please select a hotel'});
-      return;
-    }
-    if(!this.state.arrivalDate) {
-      this.setState({error: 'Please choose an arrival date'});
-      return;
-    }
-    if(!this.state.departureDate) {
-      this.setState({error: 'Please choose a departure date'});
-      return;
-    }
-    if(!this.state.name || this.state.name.length < 3) {
-      this.setState({error: 'Please type the name on the reservation'});
-      return;
-    }
-
-    this.props.onSubmit({
-      hotelName: this.state.hotelName,
-      name: this.state.name,
-      arrivalDate: this.state.arrivalDate,
-      departureDate: this.state.departureDate,
-    });
-  }
-
   public render() {
     const placeholder = {
       label: 'Select a hotel...',
@@ -103,7 +77,7 @@ class ReservationEntry extends React.PureComponent<Props, State> {
           confirmBtnText="Confirm"
           cancelBtnText="Cancel"
           customStyles={customDatePickerStyles}
-          onDateChange={arrivalDate => {this.setState({arrivalDate})}}
+          onDateChange={arrivalDate => {this.setState({ arrivalDate }); }}
         />
 
         <Text style={styles.label}>Departure Date</Text>
@@ -116,9 +90,8 @@ class ReservationEntry extends React.PureComponent<Props, State> {
           confirmBtnText="Confirm"
           cancelBtnText="Cancel"
           customStyles={customDatePickerStyles}
-          onDateChange={departureDate => {this.setState({departureDate})}}
+          onDateChange={departureDate => {this.setState({ departureDate }); }}
         />
-
 
         <Text style={styles.label}>Name on the reservation</Text>
         <TextInput
@@ -139,8 +112,33 @@ class ReservationEntry extends React.PureComponent<Props, State> {
       </View>);
   }
 
-}
+  private validateAndSubmit() {
+    if (!this.state.hotelName) {
+      this.setState({ error: 'Please select a hotel' });
+      return;
+    }
+    if (!this.state.arrivalDate) {
+      this.setState({ error: 'Please choose an arrival date' });
+      return;
+    }
+    if (!this.state.departureDate) {
+      this.setState({ error: 'Please choose a departure date' });
+      return;
+    }
+    if (!this.state.name || this.state.name.length < 3) {
+      this.setState({ error: 'Please type the name on the reservation' });
+      return;
+    }
 
+    this.props.onSubmit({
+      hotelName: this.state.hotelName,
+      name: this.state.name,
+      arrivalDate: this.state.arrivalDate,
+      departureDate: this.state.departureDate,
+    });
+  }
+
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 15,
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   input: {
     paddingHorizontal: 10,
@@ -215,11 +213,11 @@ const customDatePickerStyles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 4,
-    marginLeft: 0
+    marginLeft: 0,
   },
   dateInput: {
     borderRadius: 4,
-  }
+  },
 });
 
 export default ReservationEntry;

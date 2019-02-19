@@ -21,6 +21,8 @@
     react-native run-android
     ```
 
+
+
 ### App Screenshots
 
 ![Reservations Screenshot](docs/thumb/reservations-screenshot-ios.jpg?raw=true "Reservations")
@@ -52,17 +54,16 @@ The folder structure is set up as follows:
     └── ...
 
 
-### Architecture and design decisions
+### Architecture and Design
 
-The goal of the folder structure was to keep the project modular and easy to 
-navigate.  Styles were bundled with their respective component files for encapsulation. 
-In an app that has further style reuse across components we could have separate style files. 
-While there isn't much state to maintain, insertions of new reservations is done via an update
-to the graphql cache.  This makes reloading the reservations list faster after insertion at 
-the risk of an expired cache.  We have some basic validation in place for form submission which could be
-extended for a production system.  For code style, we have `tslint` enabled and using the airbnb recommended
-styles.  While the infrastructure for testing is in place, due to time constraints, this feature is incomplete.
-Given time, database models would be mocked, all screens would have automatic snapshots, and unit testing 
+The application is fully functional on iOS and Android.  The goal of the folder structure was to keep the project 
+modular and easy to navigate.  Styles were bundled with their respective component files for encapsulation. In an app 
+that has further style reuse across components we could have separate style files. While there isn't much state to
+maintain, insertions of new reservations is done via an update to the graphql cache.  This makes reloading the 
+reservations list faster after insertion at the risk of an expired cache.  We have some basic validation in place for
+form submission which could be extended for a production system.  For code style, we have `tslint` enabled and using the
+airbnb recommended styles.  While the infrastructure for testing is in place, due to time constraints, this feature is 
+incomplete. Given time, database models would be mocked, all screens would have automatic snapshots, and unit testing 
 coverage would be comprehensive.
 
 

@@ -1,10 +1,10 @@
 import gql from 'graphql-tag';
+import moment from 'moment';
 import * as React from 'react';
 import { Query } from 'react-apollo';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
-import moment from 'moment'
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-import Reservation from "../types/ReservationType";
+import Reservation from '../types/ReservationType';
 
 const QUERY_RESERVATIONS = gql`
   query  {
@@ -30,9 +30,8 @@ interface Data {
 
 class QueryReservations extends Query<Data> {}
 
-
 interface Props {
-  reservation: Reservation
+  reservation: Reservation;
 }
 
 const ReservationListItem = (props: Props) => (
@@ -43,7 +42,7 @@ const ReservationListItem = (props: Props) => (
       <Text>{props.reservation.name}</Text>
     </View>
     <View style={reservationStyles.itemRight} >
-      <Text style={{color: 'black'}}>{moment(props.reservation.arrivalDate).format("MMM Do 'YY")} to {moment(props.reservation.arrivalDate).format("MMM Do 'YY")}</Text>
+      <Text style={{ color: 'black' }}>{moment(props.reservation.arrivalDate).format("MMM Do 'YY")} to {moment(props.reservation.arrivalDate).format("MMM Do 'YY")}</Text>
     </View>
   </View>
 );
@@ -74,7 +73,6 @@ const ReservationList = () => (
   </QueryReservations>
 );
 
-
 const reservationStyles = StyleSheet.create({
   list: {
     marginTop: 20,
@@ -103,9 +101,7 @@ const reservationStyles = StyleSheet.create({
   primaryText: {
     fontSize: 18,
     fontWeight: 'bold',
-  }
+  },
 });
-
-
 
 export default ReservationList;

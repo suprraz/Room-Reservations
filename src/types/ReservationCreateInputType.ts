@@ -1,5 +1,5 @@
 
-type ReservationCreateInputType = {
+interface ReservationCreateInputType {
   name: string;
   hotelName: string;
   arrivalDate: string;

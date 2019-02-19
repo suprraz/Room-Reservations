@@ -1,12 +1,12 @@
-import * as React from 'react';
-import {Mutation} from "react-apollo";
 import gql from 'graphql-tag';
+import * as React from 'react';
+import { Mutation } from 'react-apollo';
 
+import { Alert, ScrollView } from 'react-native';
+import { NavigationScreenProp } from 'react-navigation';
+import HiltonHeader from '../components/HiltonHeader';
 import ReservationEntry from '../components/ReservationEntry';
 import ReservationCreateInputType from '../types/ReservationCreateInputType';
-import {Alert, ScrollView} from "react-native";
-import {NavigationScreenProp} from "react-navigation";
-import HiltonHeader from "../components/HiltonHeader";
 
 const CREATE_RESERVATION = gql`
   mutation CreateReservation($data: ReservationCreateInput!) {
@@ -39,7 +39,7 @@ interface Props {
 const NewReservationScreen = (props: Props) => (
   <Mutation
     mutation={CREATE_RESERVATION}
-    update={(cache, { data : { createReservation }}) => {
+    update={(cache, { data : { createReservation } }) => {
       const { reservations } = cache.readQuery({ query: QUERY_RESERVATIONS });
       cache.writeQuery({
         query: QUERY_RESERVATIONS,
@@ -49,18 +49,18 @@ const NewReservationScreen = (props: Props) => (
   >
     {(createReservation) => {
       const create = (data: ReservationCreateInputType) => {
-        createReservation({variables: {data}})
+        createReservation({ variables: { data } })
           .then(() => {
             Alert.alert(
               'Registration complete',
               '',
               [
-                {text: 'OK', onPress: () => props.navigation.navigate('Reservations')},
+                { text: 'OK', onPress: () => props.navigation.navigate('Reservations') },
               ]);
-            ;
+            
           }).catch(() => {
-          Alert.alert('There was an error submitting your form, please try again later.');
-        });
+            Alert.alert('There was an error submitting your form, please try again later.');
+          });
       };
 
       return (

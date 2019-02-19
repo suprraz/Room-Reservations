@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import { Button, ScrollView } from 'react-native';
 import { NavigationScreenProp } from 'react-navigation';
 
+import HiltonHeader from '../components/HiltonHeader';
 import ReservationList from '../components/ReservationList';
-import HiltonHeader from "../components/HiltonHeader";
 
 interface Props {
   navigation: NavigationScreenProp<any, any>;
@@ -15,7 +15,7 @@ class ReservationsScreen extends React.PureComponent<Props, State> {
   public render() {
     return (
       <ScrollView>
-        <HiltonHeader title={"RESERVATIONS"}/>
+        <HiltonHeader title={'RESERVATIONS'}/>
 
         <Button
           onPress={() => this.props.navigation.navigate('NewReservation')}

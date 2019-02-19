@@ -1,7 +1,7 @@
-import {Image, StyleSheet, Text, View} from "react-native";
-import * as React from "react";
+import * as React from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import Logo from "../assets/Hilton_logo.png";
+import Logo from '../assets/Hilton_logo.png';
 
 interface Props {
   title: string;
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: 80,
     marginVertical: 20,
     resizeMode: 'contain',
-  }
+  },
 });
 
 export default HiltonHeader;

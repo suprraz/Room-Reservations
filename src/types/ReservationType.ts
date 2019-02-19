@@ -1,5 +1,5 @@
 
-type Reservation = {
+interface Reservation {
   id: string;
   name: string;
   hotelName: string;
