@@ -80,8 +80,6 @@ class ReservationEntry extends React.PureComponent<Props, State> {
 
     return (
       <View style={styles.container}>
-        <Text style={[styles.label, styles.title]}>NEW RESERVATION</Text>
-
         <Text style={styles.label}>Hotel</Text>
         <RNPickerSelect
           placeholder={placeholder}
@@ -135,7 +133,7 @@ class ReservationEntry extends React.PureComponent<Props, State> {
         <Button
           onPress={() => this.validateAndSubmit()}
           title="Book Reservation"
-          color="#841584"
+          color="#104c97"
           accessibilityLabel="Book Reservation"
         />
       </View>);
@@ -146,17 +144,10 @@ class ReservationEntry extends React.PureComponent<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 40,
     paddingHorizontal: 10,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
-  },
-  title: {
-    fontSize: 20,
-    color: 'darkgray',
-    width: '100%',
     textAlign: 'center',
   },
   label: {
@@ -179,8 +170,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   error: {
-    marginTop: 40,
-    marginBottom: 40,
+    marginTop: 20,
+    marginBottom: 20,
     color: 'red',
     width: '100%',
     textAlign: 'center',

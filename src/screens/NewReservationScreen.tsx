@@ -4,8 +4,9 @@ import gql from 'graphql-tag';
 
 import ReservationEntry from '../components/ReservationEntry';
 import ReservationCreateInputType from '../types/ReservationCreateInputType';
-import {Alert} from "react-native";
+import {Alert, ScrollView} from "react-native";
 import {NavigationScreenProp} from "react-navigation";
+import HiltonHeader from "../components/HiltonHeader";
 
 const CREATE_RESERVATION = gql`
   mutation CreateReservation($data: ReservationCreateInput!) {
@@ -63,7 +64,11 @@ const NewReservationScreen = (props: Props) => (
       };
 
       return (
-        <ReservationEntry onSubmit={create} />
+        <ScrollView>
+          <HiltonHeader title={'NEW RESERVATION'}/>
+
+          <ReservationEntry onSubmit={create} />
+        </ScrollView>
       );
     }}
   </Mutation>
