@@ -1,5 +1,13 @@
-# PeP Reservation Application
+# Room Reservations
 
+## A sample room booking application for iOS and Android.
+
+
+*__Tech Stack__*
+> * React-Native
+> * Apollo-Client
+> * GraphQL
+> * Typescript
 
 ### Environment setup:
 
@@ -43,7 +51,7 @@ The folder structure is set up as follows:
     ├── ...
     ├── docs                   # Docs folder
     ├── src                    # Primary source file directory
-    │   ├── __snapshots__      # Jest test snapshots
+    │   ├── __snapshots__      # Test snapshots
     │   ├── assets             # Images and media
     │   ├── components         # Reusable components folder
     │   ├── screens            # Screen components
@@ -67,3 +75,6 @@ incomplete. Given time, database models would be mocked, all screens would have 
 coverage would be comprehensive.
 
 
+### License
+
+MIT
