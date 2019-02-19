@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   label: {
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 5,
     fontSize: 15,
     width: '100%',
