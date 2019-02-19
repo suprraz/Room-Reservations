@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
+import { NavigationScreenProp } from 'react-navigation';
 import ReservationList from '../components/ReservationList';
 
 const styles = StyleSheet.create({
@@ -10,22 +11,28 @@ const styles = StyleSheet.create({
   },
 });
 
-class ReservationsScreen extends React.PureComponent {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Res Lis 2t</Text>
+interface Props {
+  navigation: NavigationScreenProp<any, any>;
+}
 
-                <ReservationList/>
+interface State {}
 
-                <Button
-                    onPress={() => this.props.navigation.navigate('NewReservation')}
-                    title="New Reservation"
-                    color="#841584"
-                    accessibilityLabel="New Reservation"
-                />
-            </View>);
-    }
+class ReservationsScreen extends React.PureComponent<Props, State> {
+  public render() {
+    return (
+      <View style={styles.container}>
+
+        <Button
+          onPress={() => this.props.navigation.navigate('NewReservation')}
+          title="New Reservation"
+          color="#841584"
+          accessibilityLabel="New Reservation"
+        />
+
+        <ReservationList/>
+
+      </View>);
+  }
 }
 
 export default ReservationsScreen;

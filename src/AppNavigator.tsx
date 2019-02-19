@@ -1,19 +1,20 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
-import ReservationsScreen from './screens/ReservationsScreen';
 import NewReservationScreen from './screens/NewReservationScreen';
+import ReservationsScreen from './screens/ReservationsScreen';
 
-const AppNavigator = createStackNavigator({
-        Reservations: {
-            screen: ReservationsScreen
-        },
-        NewReservation: {
-            screen: NewReservationScreen
-        },
+const AppNavigator = createStackNavigator(
+  {
+    Reservations: {
+      screen: ReservationsScreen,
     },
-    {
-        initialRouteName: "Reservations"
-    }
+    NewReservation: {
+      screen: NewReservationScreen,
+    },
+  },
+  {
+    initialRouteName: 'Reservations',
+  },
 );
 
 export default createAppContainer(AppNavigator);

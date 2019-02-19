@@ -9,7 +9,7 @@
     "types": [
       "jest"
     ],
-    "outDir": "outputs"",
+    "outDir": "outputs",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   }
