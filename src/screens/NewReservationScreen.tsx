@@ -4,6 +4,8 @@ import gql from 'graphql-tag';
 
 import ReservationEntry from '../components/ReservationEntry';
 import ReservationCreateInputType from '../types/ReservationCreateInputType';
+import {Alert} from "react-native";
+import {NavigationScreenProp} from "react-navigation";
 
 const CREATE_RESERVATION = gql`
   mutation CreateReservation($data: ReservationCreateInput!) {
@@ -17,11 +19,48 @@ const CREATE_RESERVATION = gql`
   }
 `;
 
-const NewReservationScreen = () => (
-  <Mutation mutation={CREATE_RESERVATION}>
+const QUERY_RESERVATIONS = gql`
+  query  {
+    reservations {
+      id
+      name
+      hotelName
+      arrivalDate
+      departureDate
+    }
+  }
+`;
+
+interface Props {
+  navigation: NavigationScreenProp<any, any>;
+}
+
+const NewReservationScreen = (props: Props) => (
+  <Mutation
+    mutation={CREATE_RESERVATION}
+    update={(cache, { data : { createReservation }}) => {
+      const { reservations } = cache.readQuery({ query: QUERY_RESERVATIONS });
+      cache.writeQuery({
+        query: QUERY_RESERVATIONS,
+        data: { reservations: reservations.concat([createReservation]) },
+      });
+    }}
+  >
     {(createReservation) => {
-      const create = (data: ReservationCreateInputType) =>
-        createReservation({ variables: { data } });
+      const create = (data: ReservationCreateInputType) => {
+        createReservation({variables: {data}})
+          .then(() => {
+            Alert.alert(
+              'Registration complete',
+              '',
+              [
+                {text: 'OK', onPress: () => props.navigation.navigate('Reservations')},
+              ]);
+            ;
+          }).catch(() => {
+          Alert.alert('There was an error submitting your form, please try again later.');
+        });
+      };
 
       return (
         <ReservationEntry onSubmit={create} />

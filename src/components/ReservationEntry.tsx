@@ -1,15 +1,12 @@
 import * as React from 'react';
-import {Alert, Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import RNPickerSelect from 'react-native-picker-select';
-import {NavigationScreenProp} from "react-navigation";
 
 import ReservationCreateInputType from '../types/ReservationCreateInputType';
-import Reservation from "../types/ReservationType";
 
 interface Props {
-  onSubmit(reservationCreateInput: ReservationCreateInputType): Promise<Reservation>;
-  navigation: NavigationScreenProp<any, any>;
+  onSubmit(reservationCreateInput: ReservationCreateInputType): void;
 }
 
 interface State {
@@ -46,15 +43,6 @@ class ReservationEntry extends React.PureComponent<Props, State> {
       hotelName: '',
       error: '',
     };
-
-    //todo: remove this
-    this.state = {
-      arrivalDate: '03/18/2019',
-      departureDate: '03/20/2019',
-      name: 'Mike Rizzo',
-      hotelName: 'Hilton NYC',
-      error: '',
-    };
   }
 
   private validateAndSubmit() {
@@ -75,21 +63,11 @@ class ReservationEntry extends React.PureComponent<Props, State> {
       return;
     }
 
-    this.submit();
-  }
-
-  private submit() {
-    return this.props.navigation.navigate('Reservations');
     this.props.onSubmit({
       hotelName: this.state.hotelName,
       name: this.state.name,
       arrivalDate: this.state.arrivalDate,
       departureDate: this.state.departureDate,
-    }).then(( ) => {
-      Alert.alert('Registration complete');
-
-    }).catch((error) => {
-      console.log('there was an error sending the query', error);
     });
   }
 
