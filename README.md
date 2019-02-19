@@ -33,11 +33,13 @@
 
 ### App Screenshots
 
+#### iOS
 ![Reservations Screenshot](docs/thumb/reservations-screenshot-ios.jpg?raw=true "Reservations")
 .
 ![New Reservation Screenshot](docs/thumb/new-reservation-screenshot-ios.jpg?raw=true "Reservations")
 
 
+#### Android
 ![Reservations Screenshot](docs/thumb/reservations-screenshot-android.jpg?raw=true "Reservations") 
 .
 ![New Reservation Screenshot](docs/thumb/new-reservation-screenshot-android.jpg?raw=true "Reservations")
