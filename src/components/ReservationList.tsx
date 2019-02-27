@@ -42,7 +42,7 @@ const ReservationListItem = (props: Props) => (
       <Text>{props.reservation.name}</Text>
     </View>
     <View style={reservationStyles.itemRight} >
-      <Text style={{ color: 'black' }}>{moment(props.reservation.arrivalDate).format("MMM Do 'YY")} to {moment(props.reservation.arrivalDate).format("MMM Do 'YY")}</Text>
+      <Text style={{ color: 'black' }}>{moment(props.reservation.arrivalDate).format("MMM Do 'YY")} to {moment(props.reservation.departureDate).format("MMM Do 'YY")}</Text>
     </View>
   </View>
 );
